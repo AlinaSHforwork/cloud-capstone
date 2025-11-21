@@ -1,30 +1,31 @@
 ---
-- name: Configure Web Server
+- name: Install Docker on EC2
   hosts: all
-  become: true
+  become: true  # This means "run as sudo"
   tasks:
     - name: Update apt cache
       apt:
         update_cache: yes
+        cache_valid_time: 3600
 
-    - name: Install Docker
+    - name: Install Docker dependencies
       apt:
-        name: docker.io
+        name:
+          - docker.io
+          - docker-compose-v2
         state: present
 
-    - name: Install Docker Compose
-      apt:
-        name: docker-compose
-        state: present
-
-    - name: Start Docker Service
+    - name: Start Docker service
       service:
         name: docker
         state: started
         enabled: yes
 
-    - name: Add user to docker group
+    - name: Add ubuntu user to docker group
       user:
         name: ubuntu
         groups: docker
         append: yes
+
+    - name: Reconnect to apply group changes
+      meta: reset_connection
