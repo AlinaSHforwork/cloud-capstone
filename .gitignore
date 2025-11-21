@@ -1,9 +1,43 @@
+--- Terraform ---
+
+Local .terraform directories
+
+*/.terraform/
+
+.tfstate files (Contains sensitive info - NEVER commit these!)
+
+*.tfstate
+.tfstate.
+
+Crash log files
+
+crash.log
+
+Exclude all .tfvars files, which are likely to contain sentitive data, such as
+
+password, private keys, and other secrets. These should not be part of version
+
+control as they are data points which are potentially sensitive and subject
+
+to change depending on the environment.
+
+*.tfvars
+*.tfvars.json
+
 --- Python ---
+
+Byte-compiled / optimized / DLL files
 
 pycache/
 *.py[cod]
 *$py.class
+
+C extensions
+
 *.so
+
+Distribution / packaging
+
 .Python
 build/
 develop-eggs/
@@ -23,79 +57,28 @@ share/python-wheels/
 *.egg
 MANIFEST
 
-Virtual Environments
-
-venv/
-.venv/
-env/
-.env/
-ENV/
-
---- Terraform ---
-
-Local .terraform directories
-
-*/.terraform/
-
-.tfstate files
-
-*.tfstate
-.tfstate.
-
-Crash log files
-
-crash.log
-crash.*.log
-
-Exclude sensitive variables files
-
-*.tfvars
-*.tfvars.json
-
-Override files
-
-override.tf
-override.tf.json
-*_override.tf
-*_override.tf.json
-
-CLI configuration files
-
-.terraformrc
-terraform.rc
-
-Note: .terraform.lock.hcl should generally be committed to git
-
-to ensure consistent provider versions.
-
 --- Ansible ---
 
 *.retry
 
---- Docker ---
-
-Ignore local environment variables file
-
-.env
-
---- IDE & OS ---
-
-VS Code
-
-.vscode/
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-
-JetBrains / PyCharm
-
-.idea/
-
-macOS
+--- OS Specific ---
 
 .DS_Store
-
-Windows
-
 Thumbs.db
+
+--- Editor Specific ---
+
+.idea/
+.vscode/
+*.swp
+
+--- Keys ---
+
+*.pem
+*.pub
+
+Specifically ignore the key generated for this project if it's in the repo
+
+capstone_key
+capstone_key.pub
+terraform/terraform.tfstate.backup
